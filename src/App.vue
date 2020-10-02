@@ -1,15 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+     <header>
+        <span v-on:click="ChangePage('Home')">Home</span>
+        <span v-on:click="ChangePage('Stats')">Stats</span>
+    </header>
+    <Home v-if="page === 'Home'" />
+    <Stats v-else-if="page === 'Stats'"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/Home.vue'
+import Stats from './components/Stats.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home,
+    Stats
+  },
+  data() {
+    return {
+      page: 'Home'
+    }
+  },
+  methods: {
+    ChangePage(clickedPage) {
+      this.page = clickedPage;
+    }
   }
 }
 </script>
@@ -21,6 +39,20 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+header {
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+  padding: 5px;
+}
+header span {
+  background-color: #f3f3f3;
+  cursor: pointer;
+  margin: 5px;
+}
+
+header span:hover {
+  color: #ffa200;
 }
 </style>

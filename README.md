@@ -1,4 +1,4 @@
-# vue_sap_test
+# vue_spa_test
 
 ## Project setup
 ```
